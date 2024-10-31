@@ -8,15 +8,20 @@ handle = "ansa-offsite-extension"
 type = "payments_extension"
 
 
-merchant_label = "Offsite Payments App Extension"
-payment_session_url = "https://api.paymentprovider.com/endpoint"
+merchant_label = "Ansa Balance"
+
+# During development, updated to enable consistent redirects for testing.
+payment_session_url = "https://sleepy-bowie-bear.ngrok.io/app/payment_session"
+refund_session_url = "https://sleepy-bowie-bear.ngrok.io/app/refund_session"
+capture_session_url = "https://sleepy-bowie-bear.ngrok.io/app/capture_session"
+void_session_url = "https://sleepy-bowie-bear.ngrok.io/app/void_session"
 supports_oversell_protection = false
 # List of ISO 3166 (alpha-2) country codes your app is available for installation by merchants. Learn more:
 # https://www.iso.org/iso-3166-country-codes.html
 supported_countries = ["US"]
 # List payment method names that your payment extension will support. Learn more:
 # https://github.com/activemerchant/payment_icons/blob/master/db/payment_icons.yml
-supported_payment_methods = ["visa"]
+supported_payment_methods = ["visa", "mastercard"]
 supports_3ds = false
 supports_installments = false
 supports_deferred_payments = false

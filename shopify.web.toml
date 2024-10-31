@@ -2,6 +2,16 @@ name = "remix"
 roles = ["frontend", "backend"]
 webhooks_path = "/webhooks"
 
+# NOTE(JT)
+# We explicitly set these instead of using Shopify's
+# auto-gen'd Cloudflare tunnels, because the payment extension
+# explicitly requires us to set fixed redirect URLs – 
+# and the app dev server isn't smart enough to
+# update those dynamically.
+
+host = "https://sleepy-bowie-bear.ngrok.io"
+port =  2671
+
 [commands]
 dev = "npm exec remix dev"
 

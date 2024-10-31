@@ -10,6 +10,14 @@ if (
   delete process.env.HOST;
 }
 
+// NOTE(JT)
+// For whatever stupid reason, using a fixed ngrok URL
+// with the app dev server breaks because it's sending dev server
+// traffic over the tunnel (like /ping). Deleting this env
+// variable fixes local development.
+// https://github.com/Shopify/cli/issues/2935#issuecomment-1791255061
+delete process.env.REMIX_DEV_ORIGIN;
+
 /** @type {import('@remix-run/dev').AppConfig} */
 module.exports = {
   ignoredRouteFiles: ["**/.*"],
