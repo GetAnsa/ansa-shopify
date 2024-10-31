@@ -1,8 +1,8 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-name = "<App Name>"
-client_id = "<API Client ID>"
-application_url = "https://example.com"
+name = "ansa-offsite"
+client_id = "531d5ac13bcc98942dc59a3eae55baf6"
+application_url = "https://discusses-gathering-level-spirituality.trycloudflare.com"
 embedded = false
 
 [access_scopes]
@@ -11,8 +11,9 @@ scopes = "write_payment_gateways,write_payment_sessions"
 
 [auth]
 redirect_urls = [
-  "https://app.example.com/api/auth/callback",
-  "https://app.example.com/api/auth/oauth/callback",
+  "https://discusses-gathering-level-spirituality.trycloudflare.com/auth/callback",
+  "https://discusses-gathering-level-spirituality.trycloudflare.com/auth/shopify/callback",
+  "https://discusses-gathering-level-spirituality.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
@@ -23,3 +24,5 @@ embedded = false
 
 [build]
 include_config_on_deploy = true
+dev_store_url = "quickstart-a9a799dd.myshopify.com"
+automatically_update_urls_on_dev = true
