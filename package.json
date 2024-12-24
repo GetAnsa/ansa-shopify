@@ -17,7 +17,8 @@
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "shopify": "shopify",
     "prisma": "prisma",
-    "graphql-codegen": "graphql-codegen"
+    "graphql-codegen": "graphql-codegen",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^4.13.0",
