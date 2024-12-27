@@ -11,10 +11,10 @@ datasource db {
 }
 
 model Session {
-  id            String          @id
+  id            String         @id
   shop          String
   state         String
-  isOnline      Boolean         @default(false)
+  isOnline      Boolean        @default(false)
   scope         String?
   expires       DateTime?
   accessToken   String
@@ -23,19 +23,20 @@ model Session {
 }
 
 model Configuration {
-  id          Int     @id @default(autoincrement())
-  session     Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
-  sessionId   String  @unique
-  shop        String
-  accountName String
-  ready       Boolean @default(true)
-  apiVersion  String  @default("unstable")
+  id                    Int     @id @default(autoincrement())
+  session               Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  sessionId             String  @unique
+  shop                  String
+  ansaMerchantId        String  @default("")
+  ansaMerchantSecretKey String  @default("")
+  ready                 Boolean @default(true)
+  apiVersion            String  @default("unstable")
 
   @@index([sessionId])
 }
 
 model PaymentSession {
-  id            String          @id
+  id            String           @id
   gid           String
   group         String
   amount        Decimal
@@ -65,9 +66,9 @@ model RefundSession {
 }
 
 model CaptureSession {
-  id         String          @id
+  id         String         @id
   gid        String
-  payment    PaymentSession  @relation(fields: [paymentId], references: [id])
+  payment    PaymentSession @relation(fields: [paymentId], references: [id])
   paymentId  String
   amount     Decimal
   currency   String
@@ -76,10 +77,10 @@ model CaptureSession {
 }
 
 model VoidSession {
-  id         String          @id
+  id         String         @id
   gid        String
-  payment    PaymentSession  @relation(fields: [paymentId], references: [id])
-  paymentId  String          @unique
+  payment    PaymentSession @relation(fields: [paymentId], references: [id])
+  paymentId  String         @unique
   proposedAt DateTime
   status     String?
 }

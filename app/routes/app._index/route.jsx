@@ -49,7 +49,8 @@ export const action = async ({ request }) => {
   const formData = await request.formData();
   const config = {
     shop: session.shop,
-    accountName: formData.get("accountName"),
+    ansaMerchantId: formData.get("ansaMerchantId"),
+    ansaMerchantSecretKey: formData.get("ansaMerchantSecretKey"),
     ready: formData.get("ready") === "true",
     apiVersion: formData.get("apiVersion"),
   };
@@ -69,7 +70,8 @@ export default function Index() {
   const { shopDomain, apiKey, config } = useLoaderData();
   const action = useActionData();
 
-  const [accountName, setAccountName] = useState(config ? config.accountName : '');
+  const [ansaMerchantId, setAnsaMerchantId] = useState(config ? config.ansaMerchantId : '');
+  const [ansaMerchantSecretKey, setAnsaMerchantSecretKey] = useState(config ? config.ansaMerchantSecretKey : '');
   const [ready, setReady] = useState(config ? config.ready : false);
   const [apiVersion, setApiVersion] = useState(config ? config.ready : 'unstable');
   const [showBanner, setShowBanner] = useState(action ? action.raiseBanner : false);
@@ -91,7 +93,7 @@ export default function Index() {
         onDismiss={() => { setErrors([]) }}
       >
         {
-          errors.map(({message}, idx) => (
+          errors.map(({ message }, idx) => (
             <Text as="p" key={idx}>{message}</Text>
           ))
         }
@@ -110,24 +112,24 @@ export default function Index() {
         status="success"
         onDismiss={() => { setShowBanner(false) }}
       />)
-    );
+  );
 
   const apiVersionOptions = [
-    {value: 'unstable', label: 'unstable'},
-    {value: '2022-01', label: '2022-01'},
-    {value: '2022-04', label: '2022-04'},
-    {value: '2022-07', label: '2022-07'},
-    {value: '2022-09', label: '2022-09'},
-    {value: '2023-01', label: '2023-01'},
-    {value: '2023-04', label: '2023-04'},
-    {value: '2023-07', label: '2023-07'},
-    {value: '2023-09', label: '2023-09'},
+    { value: 'unstable', label: 'unstable' },
+    { value: '2022-01', label: '2022-01' },
+    { value: '2022-04', label: '2022-04' },
+    { value: '2022-07', label: '2022-07' },
+    { value: '2022-09', label: '2022-09' },
+    { value: '2023-01', label: '2023-01' },
+    { value: '2023-04', label: '2023-04' },
+    { value: '2023-07', label: '2023-07' },
+    { value: '2023-09', label: '2023-09' },
   ];
 
   if (isLoading) {
     return (
       <Page fullWidth >
-        <div style={{display: "flex", height: "100vh", alignItems: "center", justifyContent: "center"}}>
+        <div style={{ display: "flex", height: "100vh", alignItems: "center", justifyContent: "center" }}>
           <Spinner accessibilityLabel="Spinner" size="large" />
         </div>
       </Page>
